@@ -3,58 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Futuristic Animated Website</title>
+    <title>Dhruvil Patel - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 class="glitch" data-text="FUTURE TECH">FUTURE TECH</h1>
-        </header>
+    <div class="cursor"></div>
+    <header>
         <nav>
             <ul>
-                <li><a href="#" class="nav-link">Home</a></li>
-                <li><a href="#" class="nav-link">About</a></li>
-                <li><a href="#" class="nav-link">Projects</a></li>
-                <li><a href="#" class="nav-link">Contact</a></li>
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
             </ul>
         </nav>
-        <main>
-            <section class="hero">
-                <div class="cube-container">
-                    <div class="cube">
-                        <div class="face front"></div>
-                        <div class="face back"></div>
-                        <div class="face right"></div>
-                        <div class="face left"></div>
-                        <div class="face top"></div>
-                        <div class="face bottom"></div>
-                    </div>
-                </div>
-                <h2>Welcome to the Future</h2>
-                <p>Explore cutting-edge technology and innovation</p>
-            </section>
-            <section class="features">
-                <div class="feature-card" id="feature1">
-                    <h3>AI Integration</h3>
-                    <p>Experience the power of artificial intelligence</p>
-                </div>
-                <div class="feature-card" id="feature2">
-                    <h3>Virtual Reality</h3>
-                    <p>Immerse yourself in new digital worlds</p>
-                </div>
-                <div class="feature-card" id="feature3">
-                    <h3>Quantum Computing</h3>
-                    <p>Unlock unprecedented computational power</p>
-                </div>
-            </section>
-        </main>
-        <footer>
-            <p>&copy; 2024 Future Tech. All rights reserved.</p>
-        </footer>
-    </div>
-    <div class="cursor"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1 class="glitch" data-text="Dhruvil Patel">Dhruvil Patel</h1>
+            <p class="subtitle">Computing Science Student | Web Developer | AI Enthusiast</p>
+            <div class="contact-info">
+                <a href="tel:825-343-0254">825-343-0254</a> |
+                <a href="https://linkedin.com/in/dhruvil-patel-915a5b2a9/" target="_blank">LinkedIn</a> |
+                <a href="mailto:dhruvilh@ualberta.ca">dhruvilh@ualberta.ca</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About Me</h2>
+            <p>I'm a 3rd year Computing Science student at the University of Alberta, specializing in Honors Computing Science with a minor in Statistics. My passion lies in web development, AI, and solving complex problems through innovative technology solutions.</p>
+        </section>
+
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <div class="experience-card">
+                <h3>Sales Associate - Under Armour</h3>
+                <p class="date">Nov 2024 - Present</p>
+                <ul>
+                    <li>Drove a 20% increase in sales through tailored product recommendations</li>
+                    <li>Elevated customer satisfaction scores by 35%</li>
+                    <li>Streamlined inventory management, reducing product shortages by 15%</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Academic Tutor - University of Alberta Students' Union</h3>
+                <p class="date">May 2023 - Present</p>
+                <ul>
+                    <li>Elevated student academic achievements, resulting in a 15% increase in comprehension</li>
+                    <li>Crafted individualized study plans, leading to a 25% improvement in exam scores</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>AI and Web Developer Intern - Smallcap.ai</h3>
+                <p class="date">May 2024 - Aug 2024</p>
+                <ul>
+                    <li>Engineered AI algorithms, enhancing user engagement by 20%</li>
+                    <li>Architected web applications, improving data retrieval efficiency by 30%</li>
+                    <li>Advanced blockchain initiatives, improving digital asset transaction security by 40%</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <h3>Interactive Event Scheduling Application</h3>
+                <p>Python, Flask, SQL</p>
+                <ul>
+                    <li>Developed a dynamic web-based application for managing and scheduling events</li>
+                    <li>Integrated user authentication and role-based access control</li>
+                    <li>Implemented REST APIs for seamless data exchange</li>
+                </ul>
+            </div>
+            <div class="project-card">
+                <h3>Machine Learning Model Deployment Platform</h3>
+                <p>Python, HTML, JavaScript</p>
+                <ul>
+                    <li>Designed a web interface to upload, train, and evaluate machine learning models</li>
+                    <li>Created an interactive UI for data visualization and model monitoring</li>
+                    <li>Integrated backend features for model selection and parameter tuning</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Technical Skills</h2>
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>Ruby</li>
+                    <li>Java</li>
+                    <li>SQL</li>
+                    <li>HTML</li>
+                    <li>JavaScript</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks and Tools</h3>
+                <ul>
+                    <li>Flask</li>
+                    <li>Git</li>
+                    <li>Autodock</li>
+                    <li>REST APIs</li>
+                    <li>Bioinformatics Libraries</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Concepts</h3>
+                <ul>
+                    <li>Machine Learning</li>
+                    <li>Data Visualization</li>
+                    <li>Backend Development</li>
+                    <li>Workflow Automation</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Dhruvil Patel. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>

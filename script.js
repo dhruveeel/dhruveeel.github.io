@@ -1,115 +1,111 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Custom cursor functionality
-    const cursor = document.querySelector('.cursor');
-
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
-    });
-
-    document.addEventListener('mousedown', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-    });
-
-    document.addEventListener('mouseup', () => {
-        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-    });
-
-    // Hover effects for interactive elements
-    const hoverElements = document.querySelectorAll('.nav-link, .project-card, .timeline-item');
-
-    hoverElements.forEach((element) => {
-        element.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-        });
-
-        element.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-        });
-    });
-
-    // GSAP animations for sections
+    // Initialize GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero section animation
-    gsap.from('.hero h1', {
-        duration: 1,
-        opacity: 0,
-        y: -50,
-        ease: 'power2.out',
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorTrail = document.querySelector('.cursor-trail');
+    
+    document.addEventListener('mousemove', (e) => {
+        gsap.to(cursor, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.1
+        });
+        
+        gsap.to(cursorTrail, {
+            x: e.clientX,
+            y: e.clientY,
+            duration: 0.3
+        });
     });
 
-    gsap.from('.subtitle', {
-        duration: 1,
+    // Typing animation
+    const texts = ['Computing Science Student', 'Web Developer', 'AI Enthusiast'];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+
+    function type() {
+        if (count === texts.length) {
+            count = 0;
+        }
+        currentText = texts[count];
+        letter = currentText.slice(0, ++index);
+
+        document.querySelector('.typing-text').textContent = letter;
+        if (letter.length === currentText.length) {
+            count++;
+            index = 0;
+            setTimeout(type, 2000);
+        } else {
+            setTimeout(type, 100);
+        }
+    }
+
+    type();
+
+    // Scroll animations
+    gsap.from('.project-card', {
+        scrollTrigger: {
+            trigger: '.projects-grid',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
+        y: 100,
         opacity: 0,
+        duration: 1,
+        stagger: 0.2
+    });
+
+    gsap.from('.skill-category', {
+        scrollTrigger: {
+            trigger: '.skills-grid',
+            start: 'top center',
+            toggleActions: 'play none none reverse'
+        },
         y: 50,
-        delay: 0.5,
-        ease: 'power2.out',
-    });
-
-    gsap.from('.contact-info p', {
-        duration: 1,
         opacity: 0,
-        x: -50,
-        delay: 1,
-        stagger: 0.2,
-        ease: 'power2.out',
+        duration: 1,
+        stagger: 0.2
     });
 
-    // Section titles animation
-    gsap.utils.toArray('.section-title').forEach((title) => {
-        gsap.from(title, {
-            scrollTrigger: {
-                trigger: title,
-                start: 'top 80%',
-            },
-            duration: 1,
-            opacity: 0,
-            y: -30,
-            ease: 'power2.out',
+    // Initialize skill levels
+    document.querySelectorAll('.skill-item').forEach(item => {
+        const level = item.dataset.level;
+        item.style.setProperty('--level', `${level}%`);
+    });
+
+    // 3D card effect
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'none';
         });
     });
 
-    // Timeline items animation
-    gsap.utils.toArray('.timeline-item').forEach((item, index) => {
-        gsap.from(item, {
-            scrollTrigger: {
-                trigger: item,
-                start: 'top 90%',
-            },
-            duration: 1,
-            opacity: 0,
-            x: index % 2 === 0 ? -100 : 100, // Alternate direction
-            ease: 'power2.out',
-        });
-    });
-
-    // Project cards animation
-    gsap.utils.toArray('.project-card').forEach((card) => {
-        gsap.from(card, {
-            scrollTrigger: {
-                trigger: card,
-                start: 'top 85%',
-            },
-            duration: 1,
-            opacity: 0,
-            scale: 0.9,
-            ease: 'power2.out',
-        });
-    });
-
-    // Skills categories animation
-    gsap.utils.toArray('.skill-category').forEach((category) => {
-        gsap.from(category, {
-            scrollTrigger: {
-                trigger: category,
-                start: 'top 90%',
-            },
-            duration: 1,
-            opacity: 0,
-            y: 50,
-            stagger: 0.2,
-            ease: 'power2.out',
+    // Parallax effect
+    document.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.project-card, .skill-category');
+        
+        parallaxElements.forEach(element => {
+            const speed = 0.1;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
         });
     });
 });

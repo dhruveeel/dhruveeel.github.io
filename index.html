@@ -5,130 +5,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dhruvil Patel - Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 </head>
 <body>
+    <div class="noise"></div>
     <div class="cursor"></div>
-    <header>
-        <nav>
+    <div class="cursor-trail"></div>
+    
+    <nav>
+        <div class="nav-content">
+            <div class="logo">DP</div>
             <ul>
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
             </ul>
-        </nav>
-    </header>
+        </div>
+    </nav>
 
-    <main>
-        <section id="home" class="hero">
-            <h1 class="glitch" data-text="Dhruvil Patel">Dhruvil Patel</h1>
-            <p class="subtitle">Computing Science Student | Web Developer | AI Enthusiast</p>
-            <div class="contact-info">
-                <a href="tel:825-343-0254">825-343-0254</a> |
-                <a href="https://linkedin.com/in/dhruvil-patel-915a5b2a9/" target="_blank">LinkedIn</a> |
-                <a href="mailto:dhruvilh@ualberta.ca">dhruvilh@ualberta.ca</a>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch-text" data-text="Dhruvil Patel">Dhruvil Patel</h1>
+            <div class="typing-text"></div>
+            <div class="social-links">
+                <a href="tel:825-343-0254">📞 825-343-0254</a>
+                <a href="mailto:dhruvilh@ualberta.ca">📧 dhruvilh@ualberta.ca</a>
+                <a href="https://linkedin.com/in/dhruvil-patel-915a5b2a9/" target="_blank">🔗 LinkedIn</a>
             </div>
-        </section>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
 
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <p>I'm a 3rd year Computing Science student at the University of Alberta, specializing in Honors Computing Science with a minor in Statistics. My passion lies in web development, AI, and solving complex problems through innovative technology solutions.</p>
-        </section>
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>3rd-year Computing Science student at the University of Alberta, specializing in Honors Computing Science with a minor in Statistics. Passionate about creating innovative solutions and exploring new technologies.</p>
+            </div>
+            <div class="education">
+                <h3>Education</h3>
+                <div class="edu-card">
+                    <h4>University of Alberta</h4>
+                    <p>Honors in Computing Science</p>
+                    <p>Expected: May 2026</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="experience" class="experience">
-            <h2>Experience</h2>
-            <div class="experience-card">
-                <h3>Sales Associate - Under Armour</h3>
-                <p class="date">Nov 2024 - Present</p>
-                <ul>
-                    <li>Drove a 20% increase in sales through tailored product recommendations</li>
-                    <li>Elevated customer satisfaction scores by 35%</li>
-                    <li>Streamlined inventory management, reducing product shortages by 15%</li>
-                </ul>
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>AI and Web Developer Intern</h3>
+                    <h4>Smallcap.ai</h4>
+                    <p class="date">May 2024 - Aug 2024</p>
+                    <ul>
+                        <li>Engineered AI algorithms enhancing user engagement by 20%</li>
+                        <li>Architected web applications improving efficiency by 30%</li>
+                        <li>Advanced blockchain security by 40%</li>
+                    </ul>
+                </div>
             </div>
-            <div class="experience-card">
-                <h3>Academic Tutor - University of Alberta Students' Union</h3>
-                <p class="date">May 2023 - Present</p>
-                <ul>
-                    <li>Elevated student academic achievements, resulting in a 15% increase in comprehension</li>
-                    <li>Crafted individualized study plans, leading to a 25% improvement in exam scores</li>
-                </ul>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Sales Associate</h3>
+                    <h4>Under Armour</h4>
+                    <p class="date">Nov 2024 - Present</p>
+                    <ul>
+                        <li>Drove 20% sales increase through recommendations</li>
+                        <li>Elevated customer satisfaction by 35%</li>
+                        <li>Reduced product shortages by 15%</li>
+                    </ul>
+                </div>
             </div>
-            <div class="experience-card">
-                <h3>AI and Web Developer Intern - Smallcap.ai</h3>
-                <p class="date">May 2024 - Aug 2024</p>
-                <ul>
-                    <li>Engineered AI algorithms, enhancing user engagement by 20%</li>
-                    <li>Architected web applications, improving data retrieval efficiency by 30%</li>
-                    <li>Advanced blockchain initiatives, improving digital asset transaction security by 40%</li>
-                </ul>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Academic Tutor</h3>
+                    <h4>University of Alberta Students' Union</h4>
+                    <p class="date">May 2023 - Present</p>
+                    <ul>
+                        <li>Increased student comprehension by 15%</li>
+                        <li>Improved exam scores by 25%</li>
+                    </ul>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="projects" class="projects">
-            <h2>Projects</h2>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="projects-grid">
             <div class="project-card">
-                <h3>Interactive Event Scheduling Application</h3>
-                <p>Python, Flask, SQL</p>
-                <ul>
-                    <li>Developed a dynamic web-based application for managing and scheduling events</li>
-                    <li>Integrated user authentication and role-based access control</li>
-                    <li>Implemented REST APIs for seamless data exchange</li>
-                </ul>
+                <div class="project-content">
+                    <h3>Event Scheduling Application</h3>
+                    <p>Python, Flask, SQL</p>
+                    <ul>
+                        <li>Dynamic web-based event management system</li>
+                        <li>User authentication and role-based access</li>
+                        <li>RESTful API implementation</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Machine Learning Model Deployment Platform</h3>
-                <p>Python, HTML, JavaScript</p>
-                <ul>
-                    <li>Designed a web interface to upload, train, and evaluate machine learning models</li>
-                    <li>Created an interactive UI for data visualization and model monitoring</li>
-                    <li>Integrated backend features for model selection and parameter tuning</li>
-                </ul>
+                <div class="project-content">
+                    <h3>ML Model Deployment Platform</h3>
+                    <p>Python, HTML, JavaScript</p>
+                    <ul>
+                        <li>Interactive model training interface</li>
+                        <li>Real-time data visualization</li>
+                        <li>Advanced parameter tuning</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="#" class="btn">View Project</a>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="skills" class="skills">
-            <h2>Technical Skills</h2>
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
             <div class="skill-category">
                 <h3>Languages</h3>
-                <ul>
-                    <li>Python</li>
-                    <li>Ruby</li>
-                    <li>Java</li>
-                    <li>SQL</li>
-                    <li>HTML</li>
-                    <li>JavaScript</li>
-                </ul>
+                <div class="skill-items">
+                    <div class="skill-item" data-level="90">Python</div>
+                    <div class="skill-item" data-level="85">Java</div>
+                    <div class="skill-item" data-level="80">SQL</div>
+                    <div class="skill-item" data-level="75">JavaScript</div>
+                </div>
             </div>
             <div class="skill-category">
-                <h3>Frameworks and Tools</h3>
-                <ul>
-                    <li>Flask</li>
-                    <li>Git</li>
-                    <li>Autodock</li>
-                    <li>REST APIs</li>
-                    <li>Bioinformatics Libraries</li>
-                </ul>
+                <h3>Frameworks & Tools</h3>
+                <div class="skill-items">
+                    <div class="skill-item" data-level="85">Flask</div>
+                    <div class="skill-item" data-level="80">Git</div>
+                    <div class="skill-item" data-level="75">REST APIs</div>
+                </div>
             </div>
             <div class="skill-category">
                 <h3>Concepts</h3>
-                <ul>
-                    <li>Machine Learning</li>
-                    <li>Data Visualization</li>
-                    <li>Backend Development</li>
-                    <li>Workflow Automation</li>
-                </ul>
+                <div class="skill-items">
+                    <div class="skill-item" data-level="85">Machine Learning</div>
+                    <div class="skill-item" data-level="80">Data Visualization</div>
+                    <div class="skill-item" data-level="75">Backend Development</div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 Dhruvil Patel. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

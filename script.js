@@ -2,6 +2,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.card');
     const nav = document.querySelector('nav');
 
+    // Particle.js configuration
+    particlesJS('particles-js', {
+        particles: {
+            number: { value: 80, density: { enable: true, value_area: 800 } },
+            color: { value: "#00ff00" },
+            shape: { type: "circle" },
+            opacity: { value: 0.5, random: false },
+            size: { value: 3, random: true },
+            line_linked: { enable: true, distance: 150, color: "#00ff00", opacity: 0.4, width: 1 },
+            move: { enable: true, speed: 6, direction: "none", random: false, straight: false, out_mode: "out", bounce: false }
+        },
+        interactivity: {
+            detect_on: "canvas",
+            events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+            modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+        },
+        retina_detect: true
+    });
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -23,12 +42,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     cards.forEach(card => {
         observer.observe(card);
-    });
-
-    // Parallax effect on scroll
-    window.addEventListener('scroll', () => {
-        const scrollPosition = window.pageYOffset;
-        document.body.style.backgroundPositionY = -scrollPosition * 0.5 + 'px';
     });
 
     // Typing effect for the main title
@@ -58,25 +71,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add a scroll-triggered animation to skills
-    const skills = document.querySelectorAll('#skills li');
-    skills.forEach((skill, index) => {
-        skill.style.opacity = '0';
-        skill.style.transform = 'translateX(-20px)';
-        skill.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        skill.style.transitionDelay = `${index * 0.1}s`;
-    });
-
-    function checkSkills() {
+    // Add a scroll-triggered animation to cards
+    function checkCards() {
         const triggerBottom = window.innerHeight / 5 * 4;
-        skills.forEach(skill => {
-            const skillTop = skill.getBoundingClientRect().top;
-            if (skillTop < triggerBottom) {
-                skill.style.opacity = '1';
-                skill.style.transform = 'translateX(0)';
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < triggerBottom) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
             }
         });
     }
 
-    window.addEventListener('scroll', checkSkills);
+    window.addEventListener('scroll', checkCards);
+    checkCards(); // Initial check
 });

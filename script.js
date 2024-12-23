@@ -1,111 +1,82 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.card');
+    const nav = document.querySelector('nav');
 
-    // Custom cursor
-    const cursor = document.querySelector('.cursor');
-    const cursorTrail = document.querySelector('.cursor-trail');
-    
-    document.addEventListener('mousemove', (e) => {
-        gsap.to(cursor, {
-            x: e.clientX,
-            y: e.clientY,
-            duration: 0.1
-        });
-        
-        gsap.to(cursorTrail, {
-            x: e.clientX,
-            y: e.clientY,
-            duration: 0.3
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
 
-    // Typing animation
-    const texts = ['Computing Science Student', 'Web Developer', 'AI Enthusiast'];
-    let count = 0;
-    let index = 0;
-    let currentText = '';
-    let letter = '';
+    // Intersection Observer for fade-in effect
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, { threshold: 0.1 });
 
-    function type() {
-        if (count === texts.length) {
-            count = 0;
-        }
-        currentText = texts[count];
-        letter = currentText.slice(0, ++index);
+    cards.forEach(card => {
+        observer.observe(card);
+    });
 
-        document.querySelector('.typing-text').textContent = letter;
-        if (letter.length === currentText.length) {
-            count++;
-            index = 0;
-            setTimeout(type, 2000);
-        } else {
-            setTimeout(type, 100);
+    // Parallax effect on scroll
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        document.body.style.backgroundPositionY = -scrollPosition * 0.5 + 'px';
+    });
+
+    // Typing effect for the main title
+    const titleElement = document.querySelector('#home h1');
+    const titleText = titleElement.textContent;
+    titleElement.textContent = '';
+    let i = 0;
+
+    function typeWriter() {
+        if (i < titleText.length) {
+            titleElement.textContent += titleText.charAt(i);
+            i++;
+            setTimeout(typeWriter, 100);
         }
     }
 
-    type();
+    typeWriter();
 
-    // Scroll animations
-    gsap.from('.project-card', {
-        scrollTrigger: {
-            trigger: '.projects-grid',
-            start: 'top center',
-            toggleActions: 'play none none reverse'
-        },
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2
-    });
-
-    gsap.from('.skill-category', {
-        scrollTrigger: {
-            trigger: '.skills-grid',
-            start: 'top center',
-            toggleActions: 'play none none reverse'
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.2
-    });
-
-    // Initialize skill levels
-    document.querySelectorAll('.skill-item').forEach(item => {
-        const level = item.dataset.level;
-        item.style.setProperty('--level', `${level}%`);
-    });
-
-    // 3D card effect
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 10;
-            const rotateY = (centerX - x) / 10;
-            
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+    // Add hover effect to navigation items
+    const navItems = nav.querySelectorAll('a');
+    navItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'scale(1.1)';
         });
-        
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'none';
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'scale(1)';
         });
     });
 
-    // Parallax effect
-    document.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll('.project-card, .skill-category');
-        
-        parallaxElements.forEach(element => {
-            const speed = 0.1;
-            element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
+    // Add a scroll-triggered animation to skills
+    const skills = document.querySelectorAll('#skills li');
+    skills.forEach((skill, index) => {
+        skill.style.opacity = '0';
+        skill.style.transform = 'translateX(-20px)';
+        skill.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        skill.style.transitionDelay = `${index * 0.1}s`;
     });
+
+    function checkSkills() {
+        const triggerBottom = window.innerHeight / 5 * 4;
+        skills.forEach(skill => {
+            const skillTop = skill.getBoundingClientRect().top;
+            if (skillTop < triggerBottom) {
+                skill.style.opacity = '1';
+                skill.style.transform = 'translateX(0)';
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkSkills);
 });
